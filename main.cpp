@@ -20,9 +20,9 @@ int main()
          a = R0,
          R2 = 0.0264;
   
- double Q1 = ((M_PI * pow(R0, 4)) / 8) * (p / (u * l));
- double Q2 = (M_PI / 8) * (p / (u * l)) * abs((pow(pow(R1, 2) - pow(R2, 2), 2) / (log(R2 / R1))) + pow(R1, 4) - pow(R2, 4));
- double Q3 = ((pow(a, 4) * pow(3, 0.5)) / 320) * (p / (u * l));
+ double Q1 = ((M_PI * pow(R0, 4.0)) / 8.0) * (p / (u * l));
+ double Q2 = (M_PI / 8.0) * (p / (u * l)) * abs((pow(pow(R1, 2.0) - pow(R2, 2.0), 2.0) / (log(R2 / R1))) + pow(R1, 4.0) - pow(R2, 4.0));
+ double Q3 = ((pow(a, 4.0) * pow(3.0, 0.5)) / 320.0) * (p / (u * l));
   
   cout<<"Q1 = " << Q1 << ", Q2 = " << Q2 << ", Q3 = " << Q3;
 
