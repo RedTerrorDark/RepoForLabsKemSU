@@ -1,11 +1,12 @@
-#include <iostream>
-#include <cmath>
-
-using namespace std;
 /*************************
 * Автор: Некрасов А.С.   *
 * Вариант 9              *
 *************************/
+
+#include <iostream>
+#include <cmath>
+
+using namespace std;
 
 int main() {
   
