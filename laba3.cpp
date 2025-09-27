@@ -8,38 +8,23 @@
 
 using namespace std;
 
-const double a = 0.00000062,
-             d = 0.0035;
-
-double math(double x) {
-  double Nu;
-  
-  if(x > 3000){
-     Nu = 3.4 + 0.014 * pow(x, 0.8);
-  } else {
-     Nu = 5.0 + 0.021 * x;
-  }
-  
-return (Nu);
-}
+  double a = 0.00000062,
+         d = 0.0035;
 
 int main() {
-  double W2, Pe;
+  double W, Pe, Nu;
   
-  cout << "| Nu | Pe |" << endl;
-  
-  for(double W = 0.1; W < 0.51; W += 0.1){
-    if( W == 0.1 || W == 0.2 || W == 0.5){
-      Pe = (W * d) / a;
-      cout << "| " << math(Pe) << " | " << Pe << " |" << endl;
+  for(int i = 1; i < 7; ++i){
+    
+    cout << "Введите W: ";
+    cin >> W;
+    Pe = (W * d) / a;
+    if(Pe > 3000){
+      Nu = 3.4 + 0.014 * pow(Pe, 0.8);
+    } else {
+      Nu = 5.0 + 0.021 * Pe;
     }
-  }
-  
-  for(int W = 1; W < 6; ++W){
-    if( W == 1 || W == 2 || W == 5){
-      Pe = (W * d) / a;
-      cout << "| " << math(Pe) << " | " << Pe << " |" << endl;
-    }
+    cout << "Nu и Pe соответственно = "<< Nu << " и " << Pe << endl;
   }
   
   return 0;
