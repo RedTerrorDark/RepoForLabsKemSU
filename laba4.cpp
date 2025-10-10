@@ -18,8 +18,8 @@ int main() {
   
   int matrix[indexRow][indexCol];
   
-  for (int indexRow1 = 0; i1 < indexRow; ++indexRow1){
-    for (int indexCol1 = 0; j1 < indexCol; ++indexCol1){
+  for (int indexRow1 = 0; indexRow1 < indexRow; ++indexRow1){
+    for (int indexCol1 = 0; indexCol1 < indexCol; ++indexCol1){
         
       cout << endl << "Введите значение матрицы под номером (" << indexRow1 << indexCol1 << "): ";
       cin >> matrix[indexRow1][indexCol1];
