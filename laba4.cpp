@@ -8,22 +8,21 @@
 
 using namespace std;
 
-int main()
-{
-  int i, j;
+int main() {
+  int indexRow, indexCol;
   
   cout << "Введите количество строк таблицы: ";
   cin >> i;
   cout << endl << "Введите количество столбцов таблицы: ";
   cin >> j;
   
-  int matrix[i][j];
+  int matrix[indexRow][indexCol];
   
-  for (int i1 = 0; i1 < i; ++i1){
-    for (int j1 = 0; j1 < j; ++j1){
+  for (int indexRow1 = 0; i1 < indexRow; ++indexRow1){
+    for (int indexCol1 = 0; j1 < indexCol; ++indexCol1){
         
-      cout << endl << "Введите значение матрицы под номером (" << i1 << j1 << "): ";
-      cin >> matrix[i1][j1];
+      cout << endl << "Введите значение матрицы под номером (" << indexRow1 << indexCol11 << "): ";
+      cin >> matrix[indexRow1][indexCol11];
     }
   }
   
@@ -42,14 +41,14 @@ int main()
   /* Вывод транспонированной матрицы*/
   cout << "Транспонированная матрица :" << endl;
   
-  int matrixTrans[i][j];
+  int matrixTrans[indexRow][indexCol];
   
-  for (int MatrixTransRow = 0; MatrixTransRow < i; ++MatrixTransRow){
-    for (int MatrixTransCol = 0; MatrixTransCol < j; ++MatrixTransCol ){
+  for (int MatrixTransposedRow = 0; MatrixTransposedRow < indexRow; ++MatrixTransposedRow){
+    for (int MatrixTransposedCol = 0; MatrixTransposedCol < indexCol; ++MatrixTransposedCol ){
         
-      matrixTrans[MatrixTransRow][MatrixTransCol] = matrix[MatrixTransCol][MatrixTransRow];
+      matrixTransposed[MatrixTransposedRow][MatrixTransposedCol] = matrix[MatrixTransposedCol][MatrixTransposedRow];
         
-      cout << matrixTrans[MatrixTransRow][MatrixTransCol] << " ";
+      cout << matrixTransposed[MatrixTransposedRow][MatrixTransposedCol] << " ";
     }
     
     cout << endl;
