@@ -21,18 +21,18 @@ int main() {
   for (int indexRow1 = 0; i1 < indexRow; ++indexRow1){
     for (int indexCol1 = 0; j1 < indexCol; ++indexCol1){
         
-      cout << endl << "Введите значение матрицы под номером (" << indexRow1 << indexCol11 << "): ";
-      cin >> matrix[indexRow1][indexCol11];
+      cout << endl << "Введите значение матрицы под номером (" << indexRow1 << indexCol1 << "): ";
+      cin >> matrix[indexRow1][indexCol1];
     }
   }
   
   cout << "Первоначально матрица выглядит так:" << endl;
   
   /* Вывод начальной таблички*/
-  for (int MatrixRow = 0; MatrixRow < i; ++MatrixRow){
-    for (int MatrixCol = 0; MatrixCol < j; ++MatrixCol ){
+  for (int matrixRow = 0; matrixRow < i; ++matrixRow){
+    for (int matrixCol = 0; matrixCol < j; ++matrixCol ){
         
-      cout << matrix[MatrixRow][MatrixCol] << " ";
+      cout << matrix[matrixRow][matrixCol] << " ";
     }
     
     cout << endl;
@@ -43,21 +43,21 @@ int main() {
   
   int matrixTrans[indexRow][indexCol];
   
-  for (int MatrixTransposedRow = 0; MatrixTransposedRow < indexRow; ++MatrixTransposedRow){
-    for (int MatrixTransposedCol = 0; MatrixTransposedCol < indexCol; ++MatrixTransposedCol ){
+  for (int matrixTransposedRow = 0; matrixTransposedRow < indexRow; ++matrixTransposedRow){
+    for (int matrixTransposedCol = 0; matrixTransposedCol < indexCol; ++matrixTransposedCol ){
         
-      matrixTransposed[MatrixTransposedRow][MatrixTransposedCol] = matrix[MatrixTransposedCol][MatrixTransposedRow];
+      matrixTransposed[matrixTransposedRow][matrixTransposedCol] = matrix[MatrixTransposedCol][matrixTransposedRow];
         
-      cout << matrixTransposed[MatrixTransposedRow][MatrixTransposedCol] << " ";
+      cout << matrixTransposed[matrixTransposedRow][matrixTransposedCol] << " ";
     }
     
     cout << endl;
   }
   
   cout << "Главня диагональ матрицы: ";
-  for (int MatrixDioganal = 0; MatrixDioganal < i ; ++MatrixDioganal){
+  for (int matrixDioganal = 0; matrixDioganal < i ; ++matrixDioganal){
     
-    cout << matrix[MatrixDioganal][MatrixDioganal] << ", ";
+    cout << matrix[matrixDioganal][matrixDioganal] << ", ";
     
   }
 
