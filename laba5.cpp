@@ -11,22 +11,22 @@ using namespace std;
 
 int mass( int numberOfArrayElements ){
     
-  int *baseMassive = new int [numberOfArrayElements];
+  int *baseArray = new int [numberOfArrayElements];
   int minIndex = 9999*9999;
   
-  for( int indexElement = 0; indexElement < numberOfArrayElements; ++indexElement) {
+  for( int elementIndex = 0; elementIndex < numberOfArrayElements; ++elementIndex) {
       
-      cout << endl << "Введите элемент массива под номером (" << indexElement << ")";
-      cin >> baseMassive[indexElement];
+      cout << endl << "Введите элемент массива под номером (" << elementIndex << ")";
+      cin >> baseArray[elementIndex];
       
-      if (baseMassive[indexElement] < minIndex){
+      if (baseArray[elementIndex] < minIndex){
           
-        minIndex = baseMassive[indexElement];
+        minIndex = baseArray[elementIndex];
         
       }
   }
   
-  return(minIndex);
+  return minIndex ;
 
 }
 
@@ -36,7 +36,7 @@ int mass( int numberOfArrayElements ){
 int main() {
   
   int X, Y, Z;
-  int k,n,m;
+  int k, n, m;
   
   cout << "Введите размер массива X: ";
   cin >> k;
