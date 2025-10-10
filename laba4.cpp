@@ -12,9 +12,9 @@ int main() {
   int indexRow, indexCol;
   
   cout << "Введите количество строк таблицы: ";
-  cin >> i;
+  cin >> indexRow;
   cout << endl << "Введите количество столбцов таблицы: ";
-  cin >> j;
+  cin >> indexCol;
   
   int matrix[indexRow][indexCol];
   
@@ -29,8 +29,8 @@ int main() {
   cout << "Первоначально матрица выглядит так:" << endl;
   
   /* Вывод начальной таблички*/
-  for (int matrixRow = 0; matrixRow < i; ++matrixRow){
-    for (int matrixCol = 0; matrixCol < j; ++matrixCol ){
+  for (int matrixRow = 0; matrixRow < indexRow; ++matrixRow){
+    for (int matrixCol = 0; matrixCol < indexCol; ++matrixCol ){
         
       cout << matrix[matrixRow][matrixCol] << " ";
     }
