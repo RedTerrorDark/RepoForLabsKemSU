@@ -14,13 +14,19 @@
 
 using namespace std;
 
+struct school
+{
+    unsigned balls, ballsSRL, age;
+    std::string name;
+};
+
 int main() {
   
   int index;
   string schollNumber;
   string line;
   
-  int pointsSumm, SRLPoints;
+  school SchoolGay
   strint student[7];
   
   cout << "Введите номер школы: ";
@@ -44,12 +50,13 @@ int main() {
         
       }
       
-      pointsSumm = stoi(student[4]) + stoi(student[5]) + stoi(student[6]);
-      SRLPoints = pointsSumm / 3;
+      SchoolGay.name = student[2] + " " + student[3]
+      SchoolGay.age = student[1]
+      SchoolGay.balls = stoi(student[4]) + stoi(student[5]) + stoi(student[6]);
+      SchoolGay.ballsSRL = pointsSumm / 3;
       
-      cout << "Год окончания школы: " << student[1] << " ФИО: " << student[2] << " " << student[3] << " Сумма баллов: " << pointsSumm << " Среднее значение Баллов: " << SRLPoints;
+      cout << "Год окончания школы: " << SchoolGay.age << " ФИО: " << SchoolGay.name << " Сумма баллов: " << SchoolGay.balls << " Среднее значение Баллов: " << SchoolGay.ballsSRL;
         
-    
     }
 
   }
