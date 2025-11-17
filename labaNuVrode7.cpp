@@ -23,8 +23,6 @@ int main() {
     
   file.close();
 
-  count(fileContent.begin(), fileContent.end(), doubleLatter);
-
   for (char latter = 'a'; latter <= 'z'; ++latter) {
     countLatter = count(fileContent.begin(), fileContent.end(), latter);
     if (countLatter > 0) {
