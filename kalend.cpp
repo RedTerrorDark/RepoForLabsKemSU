@@ -9,153 +9,114 @@
 
 using namespace std;
 
-int RabotaiUmolyau(int yearF, int monthF) { 
-    // АХАХАХ.... это типо календарь до изобретения цифр
-    string matrixCalend[6][7] = {{"--","--","--","--","--","--","--"},
+int RabotaiUmolyau(int yearForFunction, int monthForFunction) { 
+  int doDep = 6, doDep2 = 7;
+  string matrixCalend[doDep][doDep2] = {{"--","--","--","--","--","--","--"},
                                 {"--","--","--","--","--","--","--"},
                                 {"--","--","--","--","--","--","--"},
                                 {"--","--","--","--","--","--","--"},
                                 {"--","--","--","--","--","--","--"},
                                 {"--","--","--","--","--","--","--"}};
     
-    int day = 1;
-    int KStol, JStol;
+  int day = 1;
+  int KStol, JStol;
+  // Формула Зеллера, крутая штука, 2 часа себе мозги насиловал
+  if (monthForFunction < 3) {
+     monthForFunction += 12;
+     yearForFunction -= 1;
+  }
     
-    // Формула Зеллера, крутая штука, 2 часа себе мозги насиловал
-    if (monthF < 3) {
+  KStol = yearForFunction % 100;
+  JStol = yearForFunction / 100; 
+  // Формула дня недели (0=Сб, 1=Вс, 2=Пн, ..., 6=Пт)
+  int weakDay = (day + 13 * (monthForFunction + 1) / 5 + KStol + KStol / 4 + JStol / 4 + 5 * JStol) % 7;
+  // Корректировка для российского формата (Пн=0, Вт=1, ..., Вс=6), а то не гоже... с суботы начинать.
+  weakDay = (weakDay + 5) % 7;
+  // Определяем количество дней в месяце. Да. Это долго и не удобно
+  int monthDays;
 
-        monthF += 12;
-        yearF -= 1;
+  if (monthForFunction == 3 || monthForFunction == 5 || monthForFunction == 7 || monthForFunction == 8 || monthForFunction == 10 || monthForFunction == 12 || monthForFunction == 13) {
+    monthDays = 31;
+  } else if (monthForFunction == 4 || monthForFunction == 6 || monthForFunction == 9 || monthForFunction == 11) {
+    monthDays = 30;
+  } else { // тут ток февраль. а значит чекаем год на весокосный или как его там
+
+    if ((yearForFunction % 400 == 0) || ((yearForFunction % 4 == 0) && (yearForFunction % 100 != 0))) {
+      monthDays = 29;
+    } else {
+      monthDays = 28;
     }
-    
-    KStol = yearF % 100;
-    JStol = yearF / 100;
-    
-    // Формула дня недели (0=Сб, 1=Вс, 2=Пн, ..., 6=Пт)
-    int weakDay = (day + 13*(monthF+1)/5 + KStol + KStol/4 + JStol/4 + 5*JStol) % 7;
-    
-    // Корректировка для российского формата (Пн=0, Вт=1, ..., Вс=6), а то не гоже... с суботы начинать.
-    weakDay = (weakDay + 5) % 7;
-    
-    // Определяем количество дней в месяце. Да. Это долго и не удобно
-    int SkolkoEpt; // Ну ### сколько? - Не мало. - ### ты мне мозги не ###, я спрашиваю сколько! - ээээээээ 65 + еще 20 изззз... - Ладно, заткнись...
+  }
+  // Ну. и тут начинаем заполнять
+  int dayForIndex = 1;
 
-    if (monthF == 3 || monthF == 5 || monthF == 7 || monthF == 8 || monthF == 10 || monthF == 12 || monthF == 13) {
-
-        SkolkoEpt = 31;
-
-    } else if (monthF == 4 || monthF == 6 || monthF == 9 || monthF == 11) {
-
-        SkolkoEpt = 30;
-
-    } else { // тут ток февраль. а значит чекаем год на весокосный или как его там
-
-        if ((yearF % 400 == 0) || ((yearF % 4 == 0) && (yearF % 100 != 0))) {
-
-            SkolkoEpt = 29;
-
+  for (int forIndex = 0; forImdex < doDep && dayForIndex <= monthDays; ++forImdex) {
+    for (int wrongForImdex = 0; wrongForImdex < doDep2 && dayForIndex <= monthDays; ++wrongForImdex) {
+      if (forIndex == 0 && wrongForImdex < weakDay) {
+        continue; // Пропускаем пустые ячейки перед первым числом
+      }
+      if (dayForIndex <= monthDays) {
+        if (dayForIndex <= 9) {
+          matrixCalend[forIndex][wrongForImdex] = "0" + to_string(dayForIndex);
         } else {
-
-            SkolkoEpt = 28;
+          matrixCalend[forIndex][wrongForImdex] = to_string(dayForIndex);
         }
+        ++dayForIndex;
+      }
     }
-
-    // Ну. и тут начинаем заполнять
-    int Schet = 1;
-
-    for (int uh = 0; uh < 6 && Schet <= SkolkoEpt; ++uh) {
-
-        for (int huh = 0; huh < 7 && Schet <= SkolkoEpt; ++huh) {
-
-            if (uh == 0 && huh < weakDay) {
-
-                continue; // Пропускаем пустые ячейки перед первым числом
-            }
-            
-            if (Schet <= SkolkoEpt) {
-
-                if (Schet <= 9) {
-
-                    matrixCalend[uh][huh] = "0" + to_string(Schet);
-
-                } else {
-
-                    matrixCalend[uh][huh] = to_string(Schet);
-
-                }
-                Schet++;
-            }
-        }
+  }
+  // Выводим календарь
+  for (int printForImdex = 0; printForImdex < doDep; ++printForImdex) {
+    for (int wrongPrintForImdex = 0; wrongPrintForImdex < doDep2; ++wrongPrintForImdex) {
+      cout << setw(2) << matrixCalend[printForImdex][wrongPrintForImdex] << " ";
     }
+  cout << endl;
+  }
     
-    // Выводим календарь
-    for (int i = 0; i < 6; ++i) {
-
-        for (int i2 = 0; i2 < 7; ++i2) {
-
-            cout << setw(2) << matrixCalend[i][i2] << " ";
-        }
-
-        cout << endl;
-    }
-    
-    return 0;
+  return 0;
 }
 
 int main() {
+  int Year;
 
-    int Year;
+  cout << "Введите год: ";
+  cin >> Year;
 
-    cout << "Введите год: ";
-    cin >> Year;
+  cout << "=======ЯНВАРЬ=======" << endl << "Пн Вт Ср Чт Пт Сб Вс" << endl;
+  RabotaiUmolyau(Year, 1);
 
-    cout << "=======ЯНВАРЬ=======" << endl;
-    cout << "Пн Вт Ср Чт Пт Сб Вс" << endl;
-    RabotaiUmolyau(Year, 1);
+  cout << "=======ФЕВРАЛЬ=======" << endl << "Пн Вт Ср Чт Пт Сб Вс" << endl;
+  RabotaiUmolyau(Year, 2);
 
-    cout << "=======ФЕВРАЛЬ=======" << endl;
-    cout << "Пн Вт Ср Чт Пт Сб Вс" << endl;
-    RabotaiUmolyau(Year, 2);
+  cout << "=========МАРТ========" << endl << "Пн Вт Ср Чт Пт Сб Вс" << endl;
+  RabotaiUmolyau(Year, 3);
 
-    cout << "=========МАРТ========" << endl;
-    cout << "Пн Вт Ср Чт Пт Сб Вс" << endl;
-    RabotaiUmolyau(Year, 3);
+  cout << "========АПРЕЛЬ=======" << endl << "Пн Вт Ср Чт Пт Сб Вс" << endl;
+  RabotaiUmolyau(Year, 4);
 
-    cout << "========АПРЕЛЬ=======" << endl;
-    cout << "Пн Вт Ср Чт Пт Сб Вс" << endl;
-    RabotaiUmolyau(Year, 4);
+  cout << "=========МАЙ=========" << endl << "Пн Вт Ср Чт Пт Сб Вс" << endl;
+  RabotaiUmolyau(Year, 5);
 
-    cout << "=========МАЙ=========" << endl;
-    cout << "Пн Вт Ср Чт Пт Сб Вс" << endl;
-    RabotaiUmolyau(Year, 5);
+  cout << "========ИЮНЬ=========" << endl << "Пн Вт Ср Чт Пт Сб Вс" << endl;
+  RabotaiUmolyau(Year, 6);
 
-    cout << "========ИЮНЬ=========" << endl;
-    cout << "Пн Вт Ср Чт Пт Сб Вс" << endl;
-    RabotaiUmolyau(Year, 6);
+  cout << "========ИЮЛЬ=========" << endl << "Пн Вт Ср Чт Пт Сб Вс" << endl;
+  RabotaiUmolyau(Year, 7);
 
-    cout << "========ИЮЛЬ=========" << endl;
-    cout << "Пн Вт Ср Чт Пт Сб Вс" << endl;
-    RabotaiUmolyau(Year, 7);
+  cout << "========АВГУСТ=======" << endl << "Пн Вт Ср Чт Пт Сб Вс" << endl;
+  RabotaiUmolyau(Year, 8);
 
-    cout << "========АВГУСТ=======" << endl;
-    cout << "Пн Вт Ср Чт Пт Сб Вс" << endl;
-    RabotaiUmolyau(Year, 8);
+  cout << "======СЕНТЯБРЬ=======" << endl << "Пн Вт Ср Чт Пт Сб Вс" << endl;
+  RabotaiUmolyau(Year, 9);
 
-    cout << "======СЕНТЯБРЬ=======" << endl;
-    cout << "Пн Вт Ср Чт Пт Сб Вс" << endl;
-    RabotaiUmolyau(Year, 9);
+  cout << "=======ОКТЯБРЬ=======" << endl << "Пн Вт Ср Чт Пт Сб Вс" << endl;
+  RabotaiUmolyau(Year, 10);
 
-    cout << "=======ОКТЯБРЬ=======" << endl;
-    cout << "Пн Вт Ср Чт Пт Сб Вс" << endl;
-    RabotaiUmolyau(Year, 10);
+  cout << "========НОЯБРЬ=======" << endl << "Пн Вт Ср Чт Пт Сб Вс" << endl;
+  RabotaiUmolyau(Year, 11);
 
-    cout << "========НОЯБРЬ=======" << endl;
-    cout << "Пн Вт Ср Чт Пт Сб Вс" << endl;
-    RabotaiUmolyau(Year, 11);
-
-    cout << "========ДЕКАБРЬ=======" << endl;
-    cout << "Пн Вт Ср Чт Пт Сб Вс" << endl;
-    RabotaiUmolyau(Year, 12);
+  cout << "========ДЕКАБРЬ=======" << endl << "Пн Вт Ср Чт Пт Сб Вс" << endl;
+  RabotaiUmolyau(Year, 12);
  
-    return 0;
+  return 0;
 }
