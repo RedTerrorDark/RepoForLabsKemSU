@@ -50,25 +50,25 @@ int RabotaiUmolyau(int yearForFunction, int monthForFunction) {
   // Ну. и тут начинаем заполнять
   int dayForIndex = 1;
 
-  for (int forIndex = 0; forImdex < doDep && dayForIndex <= monthDays; ++forImdex) {
-    for (int wrongForImdex = 0; wrongForImdex < doDep2 && dayForIndex <= monthDays; ++wrongForImdex) {
-      if (forIndex == 0 && wrongForImdex < weakDay) {
+  for (int forIndex = 0; forIndex < doDep && dayForIndex <= monthDays; ++forIndex) {
+    for (int wrongForIndex = 0; wrongForIndex < doDep2 && dayForIndex <= monthDays; ++wrongForIndex) {
+      if (forIndex == 0 && wrongForIndex < weakDay) {
         continue; // Пропускаем пустые ячейки перед первым числом
       }
       if (dayForIndex <= monthDays) {
         if (dayForIndex <= 9) {
-          matrixCalend[forIndex][wrongForImdex] = "0" + to_string(dayForIndex);
+          matrixCalend[forIndex][wrongForIndex] = "0" + to_string(dayForIndex);
         } else {
-          matrixCalend[forIndex][wrongForImdex] = to_string(dayForIndex);
+          matrixCalend[forIndex][wrongForIndex] = to_string(dayForIndex);
         }
         ++dayForIndex;
       }
     }
   }
   // Выводим календарь
-  for (int printForImdex = 0; printForImdex < doDep; ++printForImdex) {
-    for (int wrongPrintForImdex = 0; wrongPrintForImdex < doDep2; ++wrongPrintForImdex) {
-      cout << setw(2) << matrixCalend[printForImdex][wrongPrintForImdex] << " ";
+  for (int printForIndex = 0; printForIndex < doDep; ++printForIndex) {
+    for (int wrongPrintForIndex = 0; wrongPrintForIndex < doDep2; ++wrongPrintForIndex) {
+      cout << setw(2) << matrixCalend[printForIndex][wrongPrintForIndex] << " ";
     }
   cout << endl;
   }
