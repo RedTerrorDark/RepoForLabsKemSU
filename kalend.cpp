@@ -9,9 +9,9 @@
 
 using namespace std;
 
-int RabotaiUmolyau(int yearForFunction, int monthForFunction) { 
-  int doDep = 6, doDep2 = 7;
-  string matrixCalend[doDep][doDep2] = {{"--","--","--","--","--","--","--"},
+int veryCoolMonthPrintFunctionEshkere(int yearForFunction, int monthForFunction) { 
+  int rowMonth = 6, colMonth = 7;
+  string matrixCalend[rowMonth][colMonth] = {{"--","--","--","--","--","--","--"},
                                 {"--","--","--","--","--","--","--"},
                                 {"--","--","--","--","--","--","--"},
                                 {"--","--","--","--","--","--","--"},
@@ -50,8 +50,8 @@ int RabotaiUmolyau(int yearForFunction, int monthForFunction) {
   // Ну. и тут начинаем заполнять
   int dayForIndex = 1;
 
-  for (int forIndex = 0; forIndex < doDep && dayForIndex <= monthDays; ++forIndex) {
-    for (int wrongForIndex = 0; wrongForIndex < doDep2 && dayForIndex <= monthDays; ++wrongForIndex) {
+  for (int forIndex = 0; forIndex < rowMonth && dayForIndex <= monthDays; ++forIndex) {
+    for (int wrongForIndex = 0; wrongForIndex < colMonth && dayForIndex <= monthDays; ++wrongForIndex) {
       if (forIndex == 0 && wrongForIndex < weakDay) {
         continue; // Пропускаем пустые ячейки перед первым числом
       }
@@ -66,8 +66,8 @@ int RabotaiUmolyau(int yearForFunction, int monthForFunction) {
     }
   }
   // Выводим календарь
-  for (int printForIndex = 0; printForIndex < doDep; ++printForIndex) {
-    for (int wrongPrintForIndex = 0; wrongPrintForIndex < doDep2; ++wrongPrintForIndex) {
+  for (int printForIndex = 0; printForIndex < rowMonth; ++printForIndex) {
+    for (int wrongPrintForIndex = 0; wrongPrintForIndex < colMonth; ++wrongPrintForIndex) {
       cout << setw(2) << matrixCalend[printForIndex][wrongPrintForIndex] << " ";
     }
   cout << endl;
@@ -77,46 +77,17 @@ int RabotaiUmolyau(int yearForFunction, int monthForFunction) {
 }
 
 int main() {
-  int Year;
+  int Year, numberOfMonth = 12;
+  string monthName[numberOfMonth] = {"ЯНВАРЬ", "ФЕВРАЛЬ", "МАРТ", "АПРЕЛЬ", "МАЙ", "ИЮНЬ", "ИЮЛЬ", "АВГУСТ", "СЕНТЯБРЬ", "ОКТЯБРЬ", "НОЯБРЬ", "ДЕКАБРЬ"};
 
   cout << "Введите год: ";
   cin >> Year;
 
-  cout << "=======ЯНВАРЬ=======" << endl << "Пн Вт Ср Чт Пт Сб Вс" << endl;
-  RabotaiUmolyau(Year, 1);
+  for (int indexMonth = 0; indexMonth < numberOfMonth; ++indexMonth) {
+    cout << "=======" << monthName[indexMonth] << "=======" << endl << "Пн Вт Ср Чт Пт Сб Вс" << endl;
+    veryCoolMonthPrintFunctionEshkere(Year, indexMonth + 1);
+  }
 
-  cout << "=======ФЕВРАЛЬ=======" << endl << "Пн Вт Ср Чт Пт Сб Вс" << endl;
-  RabotaiUmolyau(Year, 2);
-
-  cout << "=========МАРТ========" << endl << "Пн Вт Ср Чт Пт Сб Вс" << endl;
-  RabotaiUmolyau(Year, 3);
-
-  cout << "========АПРЕЛЬ=======" << endl << "Пн Вт Ср Чт Пт Сб Вс" << endl;
-  RabotaiUmolyau(Year, 4);
-
-  cout << "=========МАЙ=========" << endl << "Пн Вт Ср Чт Пт Сб Вс" << endl;
-  RabotaiUmolyau(Year, 5);
-
-  cout << "========ИЮНЬ=========" << endl << "Пн Вт Ср Чт Пт Сб Вс" << endl;
-  RabotaiUmolyau(Year, 6);
-
-  cout << "========ИЮЛЬ=========" << endl << "Пн Вт Ср Чт Пт Сб Вс" << endl;
-  RabotaiUmolyau(Year, 7);
-
-  cout << "========АВГУСТ=======" << endl << "Пн Вт Ср Чт Пт Сб Вс" << endl;
-  RabotaiUmolyau(Year, 8);
-
-  cout << "======СЕНТЯБРЬ=======" << endl << "Пн Вт Ср Чт Пт Сб Вс" << endl;
-  RabotaiUmolyau(Year, 9);
-
-  cout << "=======ОКТЯБРЬ=======" << endl << "Пн Вт Ср Чт Пт Сб Вс" << endl;
-  RabotaiUmolyau(Year, 10);
-
-  cout << "========НОЯБРЬ=======" << endl << "Пн Вт Ср Чт Пт Сб Вс" << endl;
-  RabotaiUmolyau(Year, 11);
-
-  cout << "========ДЕКАБРЬ=======" << endl << "Пн Вт Ср Чт Пт Сб Вс" << endl;
-  RabotaiUmolyau(Year, 12);
  
   return 0;
 }
